@@ -168,3 +168,44 @@ B) Exception at runtime
 C) -1
 D) 0x00000005
 E) 5
+
+Q) Which print "true"
+A) String s = "Hello";
+   String t = "He";
+   t += "llo";
+   sout(s == t);
+
+B) String s = "Hello";
+   String t = "He";
+   t += "llo";
+   sout(s.equals(t));
+
+C) StringBuilder s = new StringBuilder("Hello");
+   StringBuilder t = new StringBuilder("He");
+   t.append("llo");
+   sout(s.equals(t));
+
+D) List<String> ls = List.of("Fred", "Jim");
+   List<String> ls2 = new ArrayList<>(ls);
+   sout(ls.equals(ls2));
+
+E) LocalDate ld = LocalDate.of(2021, 3, 29);
+   LocalDate ld2 = LocalDate.of(2021, 3, 29);
+   sout(ld.equals(ld2));
+
+Q) Which are true?
+
+     String s1 = "Hello";
+     String s2 = new StringBuilder("Hello").toString();
+     String s3 = s2.intern();
+
+and, in another jarfile:
+class X {
+  static String h = "Hel" + "lo";
+}
+
+A) s1 == s2
+B) s2 == s3
+C) s1 == s3
+D) X.h == s1
+E) None of the above
