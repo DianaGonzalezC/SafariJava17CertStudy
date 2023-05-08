@@ -31,6 +31,18 @@ public class Ex1 {
 //    try (FileReader in = new FileReader("")) {
 //    } catch (var ex) { }
 
+
+// nope, can't change base type during autoboxing
+//    Long i = 2_000_000_000;
+
+    var x = true ? "99" : 99;
+
+//    Integer in = null; // also for String :)
+//    in.compareTo... and others
+
+//    int goto;
+//    var var = "var";
+    int var = 99;
   }
 
 //  void doStuff() {
@@ -46,3 +58,5 @@ public class Ex1 {
 //    showStuff(new String[]{"a", "b"});
 //  }
 }
+
+//class var {}

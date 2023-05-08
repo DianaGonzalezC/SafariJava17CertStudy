@@ -38,3 +38,64 @@ D) void doStuff() {
 E) void doStuff() {
      var x = { 1, 2, 3 };
    }
+
+Q) Given:
+var x = true ? "99" : 99;
+
+What is the type of x?
+A) none, it's fails to compile
+B) int
+C) String
+D) Object
+E) none of the above
+
+Q) Given:
+
+     public static void main(String[] args) {
+       final StringBuilder sb = new StringBuilder("Hello");
+       sb.append(" world!");
+       System.out.println(sb);
+     }
+
+   What is the result?
+   A) Compilation fails
+   B) Hello
+   C) Hello world!
+   D) Exception at runtime
+
+Q) Given:
+
+String message = """Hello\
+Java 17 World!""";
+System.out.println(message + "XXX");
+
+What is the result?
+A) Compilation fails
+B) Exception at runtime
+C) Hello
+   Java 17 World!XXX
+D) Hello Java 17 World!XXX
+E) Hello Java 17 World!
+   XXX
+
+Q) Given:
+    String message = """
+        Hello
+            Java 17 World!""";
+    System.out.println(message + "XXX");
+
+What is the result?
+A)
+Hello
+Java 17 World!XXX
+B)
+Hello
+    Java 17 World!XXX
+C)
+Hello
+Java 17 World!
+XXX
+D)
+    Hello
+        Java 17 World!
+XXX
