@@ -99,3 +99,72 @@ D)
     Hello
         Java 17 World!
 XXX
+
+Q)
+int i = 3, j = 12, k = 2;
+System.out.println(i + j / k - i);
+
+What is the result?
+A) -15
+B) 4
+C) 6
+D) -9
+
+Q)
+int x = 10;
+System.out.println("value is " + (x++ = 99));
+
+What is the result?
+A) 10
+B) 11
+C) 99
+D) 109
+E) Compilation fails
+
+Q) Given:
+    int j = 0;
+    for (int i = 0; i < 3; i++) {
+      if (i > ++j && i % 2 == 0) ++i = ++j;
+      if (j > i + 2) continue;
+      ++j;
+      System.out.println(i + ", " + j);
+    }
+
+What is the result?
+A) 0, 2
+   1, 4
+B) 0, 2
+C) 1, 4
+D) The program runs forever
+E) Compilation fails
+
+Q) Given:
+     public static boolean getValue() {
+       System.out.println("Getting value");
+       return true;
+     }
+
+and:
+       boolean b1 = false;
+       System.out.println(b1 & getValue());
+
+What is the result:
+A) Compilation fails
+B) false
+C) true
+D) Getting value
+   false
+E) Getting value
+   true
+
+Q) Given:
+
+  int x = -1;
+  System.out.println(x & 5);
+
+What is the result?
+A) Compilation fails
+B) Exception at runtime
+C) -1
+D) 0x00000005
+E) 5
