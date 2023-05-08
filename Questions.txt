@@ -209,3 +209,64 @@ B) s2 == s3
 C) s1 == s3
 D) X.h == s1
 E) None of the above
+
+Q)   Given
+class Thing {
+  int x = 99;
+
+  static void showIt() {
+    int x = 98;
+    System.out.println("x is " + x);
+  }
+}
+
+What is the effect of:
+
+Thing.showIt();
+
+A) Compilation fails
+B) Exception
+C) 99
+D) 98
+
+Q) Given:
+     class Base {
+       void doBaseStuff() { System.out.println("doBaseStuff"); }
+     }
+and:
+     class Sub extends Base {
+       void doBaseStuff() { System.out.println("doSubStuff"); }
+       void doOtherStuff() { System.out.println("doOtherStuff"); }
+     }
+and:
+       Base b = new Sub();
+       ((Runnable) b).run();
+
+What is the result?
+A) doSubStuff
+B) doOtherStuff
+C) doBaseStuff
+D) Exception at runtime
+E) Compilation failure
+
+Q) Given:
+    Object obj = "Hello";
+    boolean answered = false;
+    if (obj instanceof String) {
+      String str = (String)obj;
+      if (str.length() > 3) {
+        System.out.println(str);
+        answered = true;
+      }
+    }
+    if (!answered) System.out.println("Nope");
+
+Which replace the if clause to produce the same output?
+A)    System.out.println(obj instanceof String str && str.length() > 3 ? str : "Nope");
+B)    if (obj instanceof String str when str.length() > 3) System.out.println(str);
+      else System.out.println("Nope");
+C)    if (obj instanceof String str if str.length() > 3) System.out.println(str);
+      else System.out.println("Nope");
+D)    System.out.println(obj instanceof String.class str && str.length() > 3 ? str : "Nope");
+E)    if (!(obj instanceof String str) || str.length() <= 3) System.out.println("Nope");
+      else System.out.println(str);
