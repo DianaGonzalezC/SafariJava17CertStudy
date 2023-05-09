@@ -501,3 +501,76 @@ D) at line n1
    }
 E) at line n1
    Client {}
+
+Q)
+interface Int1 {
+  default void doStuff() {
+    System.out.println("Int1.doStuff()");
+  }
+}
+class Cl1 implements Int1 {
+  void doStuff() {
+    System.out.println("Cl1.doStuff");
+  }
+}
+What is the result of a call:
+new Cl1().doStuff();
+
+A) Compilation fails
+B) RuntimeException
+C) Int1.doStuff()
+D) Cl1.doStuff()
+E) Int1.doStuff()
+   Cl1.doStuff()
+
+Q) Given:
+interface IntX {
+  default void doStuff() {
+    System.out.println("IntX.doStuff()");
+  }
+}
+interface IntY {
+  default void doStuff() {
+    System.out.println("IntY.doStuff()");
+  }
+}
+class ClQ implements IntX, IntY {}
+
+What is the result of a call:
+new ClQ().doStuff();
+
+A) Compilation fails
+B) RuntimeException
+C) IntX.doStuff()
+D) IntY.doStuff()
+E) C1QdoStuff()
+
+Q) Given:
+class Parent {
+  Parent(int x) { y += x; out.print(", P-c: y is " + y); }
+  static { out.print(", P-si: x is " + Parent.x); }
+  static int x = 99;
+  int y = 100;
+  { y++; out.print(", P-i: y is " + y); }
+}
+class Child extends Parent {
+  int x = 200;
+  static int y = 300;
+  Child() { super(x); }
+  Child(int x) { this(); }
+  { out.print(", C-i x: is " + x); }
+  static { out.print(", C-si: y is " + y); }
+}
+class InitOrder3 {
+  public static void main(String[] args) {
+    out.print("Hello!");
+    new Child(-1);
+    out.println(" Goodbye!");
+  }
+}
+What is the result?
+A) Compilation fails
+B) Exception at runtime
+C) Hello!, P-si: x is 0, C-si: y is 300, P-i: y is 101, P-c: y is 401, C-i x: is 200 Goodbye!
+D) , P-si: x is 0, C-si: y is 300Hello!, P-i: y is 101, P-c: y is 401, C-i x: is 200 Goodbye!
+E) Hello!, P-si: x is 99, C-si: y is 300, P-i: y is 101, P-c: y is 100Goodbye!
