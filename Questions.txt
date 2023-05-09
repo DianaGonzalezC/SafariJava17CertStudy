@@ -304,3 +304,90 @@ D) The code compiles if the word "yield" is inserted
    after the colon in both the case and default
 E) The code compiles if the changes of both C and D
    are applied
+
+Q) Given
+  void doStuff() throws IOException {};
+  void doStuff2() throws FileNotFoundException {};
+And:
+  void tryStuff() {
+    try {
+      doStuff();
+      doStuff2();
+    } enter code here {
+      // handle both exceptions
+    }
+  }
+What can be inserted at "enter code here"
+to provide handling of exceptions from both
+methods?
+A) catch (IOException | FileNotFoundException e)
+B) catch (FileNotFoundException | IOException e)
+C) catch (FileNotFoundException e)
+D) catch (IOException e)
+E) finally
+
+Q) Given
+  void doStuff() throws SQLException {};
+  void doStuff2() throws FileNotFoundException {};
+And:
+  void tryStuff() /*...insert here...*/ {
+    try {
+      doStuff();
+      doStuff2();
+    } catch (SQLException | FileNotFoundException e) {
+      throw e;
+    }
+  }
+
+What is best at "...insert here..."?
+A) throws Exception
+B) throws SQLException
+C) throws FileNotFoundException
+D) throws FileNotFoundException, SQLException
+E) nothing is needed, compilation succeeds as is
+
+Q) Given:
+class AC implements AutoCloseable {
+  private String name;
+  public AC(String name) { this.name = name; }
+  @Override public void close() {
+    System.out.print("Closing " + name);
+  }
+}
+And:
+  var ac0 = new AC("zero");
+  try (
+      var ac1 = new AC("one");
+      var ac2 = new AC("two");
+      ac0;
+  ) {
+  }
+}
+What is the result?
+A) Compilation fails
+B) Closing zero  Closing two  Closing one
+C) Closing zero  Closing one  Closing two
+D) Closing two  Closing one  Closing zero
+E) Closing one  Closing two  Closing zero
+
+Q) Given
+class AC4 implements AutoCloseable {
+  @Override
+  public void close() throws Exception {
+    throw new SQLException();
+  }
+}
+And:
+    try (
+        var one = new AC4();
+        var two = new AC4();
+        ){
+      throw new FileNotFoundException();
+    }
+
+Which are true?
+A) Compilation fails
+B) A FileNotFoundException is thrown to the caller
+C) An SQLException is thrown to the caller
+D) close methods of resources "one" and "two" are called
+E) close methods of resources "one" and "two" are not both called
