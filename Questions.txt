@@ -420,4 +420,84 @@ C) method C is called
 D) method D is called
 E) method E is called
 
-Q)
+Q)Given:
+enum Day {
+  MONDAY(1), TUESDAY;
+  public Day(int d) {}
+  public Day() {}
+}
+and:
+sout(Day.MONDAY)
+
+What is the result?
+A) 1
+B) MONDAY
+C) Day.MONDAY
+D) Exception at runtime
+E) Compilation fails
+
+Q) Given:
+public void doStuff() {
+  int len = 3;
+  Predicate<String> ps = new Predicate<String>() {
+    @Override
+    public boolean test(String s) {
+      return s.length() > len; // line n1
+    }
+  };
+  // line n2
+}
+  Which are true?
+  A) The code compiles
+  B) Compilation fails due to a problem at line n1
+  C) adding the code
+System.out.println("testing lines " + (++len));
+  at line n2 is OK
+
+Q) Given:
+class Outer1 {
+  class Inner1 {
+    private int y = 100;
+    // line n1
+  }
+  private int x = 99;
+  // line n2
+}
+
+and these method proposals:
+void showX() { sop("x is " + x); }
+void showY() { sop("y is " + y); }
+void showAnotherY(Inner1 another) { sop("y is " + another.y); }
+static Inner1 makeOne() { return new Inner1(); }
+
+Which is/are true?
+A) showX can be added at line n1
+B) showY can be added at line n2
+C) showAnotherY can be added at line n2
+D) makeOne can be added at line n1
+E) makeOne can be added at line n2
+
+Q) Given:
+record Client(String name, int creditLimit) {
+  line n1
+}
+Which can be added:
+A) At line n1
+   public Client(String name) {
+     this(name, 0);
+   }
+B) at line n1
+   public Client(String name, int creditLimit) {
+     super();
+     this.name = name;
+     this.creditLimit = creditLimit;
+   }
+C) as a separate declaration:
+   record SpecialClient(String name, int creditLimit, String greeting)
+     extends Client(name, creditLimit) {}
+D) at line n1
+   private Client() {
+     this("Unknown", 0);
+   }
+E) at line n1
+   Client {}
