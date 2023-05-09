@@ -270,3 +270,37 @@ C)    if (obj instanceof String str if str.length() > 3) System.out.println(str)
 D)    System.out.println(obj instanceof String.class str && str.length() > 3 ? str : "Nope");
 E)    if (!(obj instanceof String str) || str.length() <= 3) System.out.println("Nope");
       else System.out.println(str);
+
+Q) Given:
+    String s = "Hello";
+    switch (s) {
+      case "Hello" ->
+          System.out.print("Bonjour "); // line n1
+          System.out.print("Guten Tag ");
+      default -> System.out.print("Bye");
+    }
+
+Which is true?
+A) The code prints: Bonjour Guten Tag Bye
+B) The code prints: Bonjour Guten Tag
+C) If line n1 is removed the code prints: Guten Tag Bye
+D) If line n1 is removed the code prints: Guten Tag
+E) The code fails to compile
+
+Q)
+    int x = 1;
+    // line n1
+    switch(x) {
+      case 1: LocalDate.of(2023, x, 1);
+      default: LocalDate.of(2022, 12, 1);
+    };
+
+Which are true?
+A) The code compiles
+B) The code throws an exception at runtime
+C) The code compiles if line n1 is replaced with
+   var d =
+D) The code compiles if the word "yield" is inserted
+   after the colon in both the case and default
+E) The code compiles if the changes of both C and D
+   are applied
