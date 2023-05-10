@@ -630,3 +630,35 @@ B) Consumer<String> cs = s -> { System.out.println(s); };
 C) Supplier<String> ss = (s1, s2) -> s1 + s2;
 D) BiPredicate<String> bps = (String s) -> { return s.length() > 0; };
 E) ToIntFunction<String> tofs = s -> s.length();
+
+Q) Given:
+      ???? (s, t) -> s.length() - t.length();
+
+Which are correct inserted in place of ????
+A) BiFunction<String, String, Integer> f =
+B) BiPredicate<String> f =
+C) Comparator<String> f =
+D) Supplier<String, Integer> f =
+E) BinaryOperator<String> f =
+
+Q) Given, in a single file X.java:
+interface ArbInter {}
+final class Y implements X {}
+sealed interface X /* point x */{}
+// line n1
+
+Which is/are true?
+A) the code compiles as it stands
+B) the code compiles if the following is added at point x
+permits Y, Z
+AND this is added at line 1
+class Z implements X {}
+C) the code compiles if the following is added at point x
+permits Y, Z
+AND this is added at line 1
+record Z(String name) implements X {}
+D) the code compiles if the following is added at point x
+   permits Y extends ArbInter
+E) the code compiles if the following is added at line n1
+non-sealed abstract class Z implements X permits Q {}
+final class Q extends Z {}

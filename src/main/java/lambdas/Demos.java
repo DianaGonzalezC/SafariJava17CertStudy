@@ -1,15 +1,21 @@
 package lambdas;
 
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.ToIntFunction;
+import java.util.function.*;
 
 interface StudentCriterion {
   boolean test(Student s);
 }
 
 class Student {
-  public int getGpa() { return 0; }
-  public List<String> getCourses() { return null; }
+  public int getGpa() {
+    return 0;
+  }
+
+  public List<String> getCourses() {
+    return null;
+  }
 }
 
 class SmartStudent implements StudentCriterion {
@@ -72,5 +78,37 @@ public class Demos {
 //    Long lng = 99; // Nope
     Byte b = null;
     long lng = b;
+
+    Object BiPredicate;
+//    BiFunction<String, String, Integer> f = (s, t) -> s.length() - t.length();
+//    BiPredicate<String> f = (s, t) -> s.length() - t.length();
+//    Comparator<String> f = (s, t) -> s.length() - t.length();
+//    Supplier<String, Integer> f = (s, t) -> s.length() - t.length();
+    BinaryOperator<String> f = (s, t) -> (s.length() - t.length()) + "";
+//    BinaryOperator<String> f = (s, t) -> s + t;
+
+//    IntFunction<Integer> f1 = (f) -> f;
+//    f1.applyAsInt(Integer.valueOf(0));
+  }
+
+  interface BiFunction<A1, A2, R> {
+    R apply(A1 a1, A2 a2);
+  }
+
+  interface IntFunction<E> {
+    E applyAsInt(int i);
+  }
+  class MyIntFunction implements IntFunction<Integer> {
+    @Override
+//    public Integer applyAsInt(Integer f) {
+    public Integer applyAsInt(int f) {
+//      return Integer.valueOf(f);
+      return f;
+    }
+    @Override
+//    public boolean equals(MyIntFunction me) { return false; }
+    public boolean equals(Object me) { return false; }
+
+
   }
 }
