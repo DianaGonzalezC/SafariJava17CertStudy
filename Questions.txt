@@ -662,3 +662,35 @@ D) the code compiles if the following is added at point x
 E) the code compiles if the following is added at line n1
 non-sealed abstract class Z implements X permits Q {}
 final class Q extends Z {}
+
+
+Q) Given, rooted on the base of the classpath:
+---file: localization/MyResources.properties
+name=Fred
+-----------------------------------------------
+---file: localization/MyResources_de.properties
+name=Helmut
+-----------------------------------------------
+and:
+
+    Locale.setDefault(Locale.FRENCH);
+    ResourceBundle bundle = PropertyResourceBundle.getBundle(
+        "MyResources");
+    System.out.println("Name is " + bundle.getString("name"));
+
+What is the result?
+A) Name is Helmut
+B) Name is Fred
+C) Name is null
+D) an exception is thrown
+E) compilation fails
+
+Q)  Given:
+  StringBuilder sb1 = new StringBuilder("Hello");
+  StringBuilder sb2 = sb1;
+  sb1 = null;
+
+Which is true?
+A) sb1 is unreferenced and eligible for GC
+B) sb1 and sb2 are unreferenced and eligible for GC
+C) No objects are eligible for GC
